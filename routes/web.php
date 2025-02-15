@@ -23,15 +23,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/promo', function () {
+    return view('promo');
+});
+Route::get('/services', function () {
+    return view('services');
+});
 
 Route::middleware('auth')->group(function () {
     Route::resource('bookings', BookingController::class);
-    Route::get('/about', function () {
-        return view('about');
-    });
-    Route::get('/promo', function () {
-        return view('promo');
-    });
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -40,8 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/bookings', [AdminController::class, 'index']);
         Route::get('/bookings/search', [AdminController::class, 'search'])->name('booking.search');
-        // Route::get('/bookings/{booking}', [AdminController::class, 'show'])->name('bookings.show');
-        Route::put('/bookings/{booking}', [AdminController::class, 'update'])->name('booking.update');
+        Route::put('/bookings/{booking}/approved', [AdminController::class, 'approved'])->name('booking.approved');
+        Route::put('/bookings/{booking}/done', [AdminController::class, 'done'])->name('booking.done');
+        Route::put('/bookings/{booking}/rejected', [AdminController::class, 'rejected'])->name('booking.rejected');
     });
 });
 

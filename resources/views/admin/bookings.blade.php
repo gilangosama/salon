@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Konfirmasi Booking</title>
     @vite('resources/css/app.css')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body class="bg-white">
@@ -19,7 +17,14 @@
                     <h1 class="text-2xl font-bold text-indigo-600">Admin Panel</h1>
                 </div>
                 <div class="flex items-center">
-                    <button class="text-gray-500 hover:text-gray-700">Logout</button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form> 
                 </div>
             </div>
         </div>

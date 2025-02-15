@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (auth()->user()->role !== 'admin') {
-            return redirect()->route('/login')->with('error', 'You are not authorized to access this page');
+            abort(403, 'Unauthorized action.');
         }
         return $next($request);
     }

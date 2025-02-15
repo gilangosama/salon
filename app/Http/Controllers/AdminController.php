@@ -41,11 +41,27 @@ class AdminController extends Controller
         ]);
     }
 
-    public function update(Request $request, Booking $booking)
+    public function approved(Request $request, Booking $booking)
     {
         $booking->update(['status' => $request->status]);
     
-        Alert::success('Success', 'Booking status updated!');
+        Alert::success('Success', 'Booking berhasil di approved!');
+    
+        return redirect()->back();
+    }
+    public function rejected(Request $request, Booking $booking)
+    {
+        $booking->update(['status' => $request->status]);
+    
+        Alert::success('Success', 'Booking berhasil di reject!');
+    
+        return redirect()->back();
+    }
+    public function done (Request $request, Booking $booking)
+    {
+        $booking->update(['status' => $request->status]);
+    
+        Alert::success('Success', 'Booking telah selesai diproses!');
     
         return redirect()->back();
     }

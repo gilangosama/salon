@@ -44,7 +44,7 @@
                         </svg>
                     </button>
                 </div>
-                <select id="filter-status" class="px-4 py-2 border border-gray-200 rounded-lg">
+                <select id="filter-status" class="px-4 py-2 border border-gray-200 rounded-lg w-40">
                     <option value="all">Semua Status</option>
                     <option value="pending">Pending</option>
                     <option value="confirmed">Confirmed</option>

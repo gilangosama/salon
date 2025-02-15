@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::get('/bookings', [AdminController::class, 'index']);
+        Route::get('/bookings', [AdminController::class, 'index'])->name('booking.index');
         Route::get('/bookings/search', [AdminController::class, 'search'])->name('booking.search');
         Route::put('/bookings/{booking}/approved', [AdminController::class, 'approved'])->name('booking.approved');
         Route::put('/bookings/{booking}/done', [AdminController::class, 'done'])->name('booking.done');

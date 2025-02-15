@@ -580,7 +580,7 @@
                             <p class="mb-6 text-indigo-100">
                                 Booking sekarang dan dapatkan pengalaman perawatan kecantikan terbaik dari para ahli kami
                             </p>
-                            <a href="/booking" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-150 ease-in-out">
+                            <a href="{{ route('bookings.create') }}" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-150 ease-in-out">
                                 Booking Sekarang
                                 <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

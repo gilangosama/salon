@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Konfirmasi Booking</title>
     @vite('resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
+
 <body class="bg-white">
     <!-- Navbar -->
     <nav class="bg-white border-b">
@@ -20,114 +24,62 @@
             </div>
         </div>
     </nav>
+    @include('sweetalert::alert')
 
-    <!-- Main Content -->
     <div class="w-full px-4 py-8">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-gray-900">Daftar Booking</h2>
-            <select class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                <option>Semua Status</option>
-                <option>Pending</option>
-                <option>Dikonfirmasi</option>
-                <option>Selesai</option>
-            </select>
-        </div>
-
-        <!-- Booking Table -->
-        <div class="w-full bg-white">
-            <table class="w-full">
-                <thead>
-                    <tr class="border-b bg-gray-50">
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">Pelanggan</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">Layanan</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">Tanggal & Waktu</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/8">Status</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/8">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <!-- Booking Item 1 -->
-                    <tr>
-                        <td class="px-4 py-4">
-                            <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
-                            <div class="text-sm text-gray-500">sarah@example.com</div>
-                            <div class="text-sm text-gray-500">+62 812-3456-7890</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">Hair Treatment</div>
-                            <div class="text-sm text-gray-500">Potong rambut model layer</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">15 Feb 2024</div>
-                            <div class="text-sm text-gray-500">10:00</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <span class="text-sm text-yellow-600 font-medium">Pending</span>
-                        </td>
-                        <td class="px-4 py-4 space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900 text-sm">Konfirmasi</a>
-                            <a href="#" class="text-red-600 hover:text-red-900 text-sm">Tolak</a>
-                        </td>
-                    </tr>
-
-                    <!-- Booking Item 2 -->
-                    <tr>
-                        <td class="px-4 py-4">
-                            <div class="text-sm font-medium text-gray-900">Michael Chen</div>
-                            <div class="text-sm text-gray-500">michael@example.com</div>
-                            <div class="text-sm text-gray-500">+62 813-9876-5432</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">Facial Treatment</div>
-                            <div class="text-sm text-gray-500">Basic facial dengan masker gold</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">15 Feb 2024</div>
-                            <div class="text-sm text-gray-500">13:00</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <span class="text-sm text-green-600 font-medium">Dikonfirmasi</span>
-                        </td>
-                        <td class="px-4 py-4">
-                            <a href="#" class="text-gray-600 hover:text-gray-900 text-sm">Selesai</a>
-                        </td>
-                    </tr>
-
-                    <!-- Booking Item 3 -->
-                    <tr>
-                        <td class="px-4 py-4">
-                            <div class="text-sm font-medium text-gray-900">Lisa Anderson</div>
-                            <div class="text-sm text-gray-500">lisa@example.com</div>
-                            <div class="text-sm text-gray-500">+62 815-1234-5678</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">Nail Art</div>
-                            <div class="text-sm text-gray-500">French manicure dengan nail art</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="text-sm text-gray-900">14 Feb 2024</div>
-                            <div class="text-sm text-gray-500">15:00</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <span class="text-sm text-gray-600 font-medium">Selesai</span>
-                        </td>
-                        <td class="px-4 py-4">-</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- Pagination -->
-            <div class="px-4 py-3 border-t">
-                <div class="flex justify-between items-center">
-                    <p class="text-sm text-gray-700">Menampilkan 1-3 dari 3 hasil</p>
-                    <div class="flex gap-2">
-                        <button class="px-3 py-1 border rounded text-sm text-gray-600">Previous</button>
-                        <button class="px-3 py-1 border rounded text-sm bg-indigo-50 text-indigo-600">1</button>
-                        <button class="px-3 py-1 border rounded text-sm text-gray-600">Next</button>
-                    </div>
+        <div class="flex justify-between">
+            <div class="flex space-x-4">
+                <div class="relative">
+                    <input type="text" id="search" class="w-72 px-4 py-2 border border-gray-200 rounded-lg" placeholder="Cari...">
+                    <button class="absolute right-0 top-0 bottom-0 px-3 py-2 bg-gray-200 rounded-r-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M14.293 15.707a1 1 0 01-1.414 0l-3.586-3.586a7 7 0 111.414-1.414l3.586 3.586a1 1 0 010 1.414zM9 15a6 6 0 100-12 6 6 0 000 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </div>
+                <select id="filter-status" class="px-4 py-2 border border-gray-200 rounded-lg">
+                    <option value="all">Semua Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="rejected">Rejected</option>
+                </select>
             </div>
         </div>
+    
+        <div id="table-container">
+            @include('admin.table', ['bookings' => $bookings])
+        </div>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        function fetchBookings() {
+            let search = $('#search').val();
+            let status = $('#filter-status').val();
+    
+            $.ajax({
+                url: '{{ route("booking.search") }}',
+                type: 'GET',
+                data: { search: search, status: status },
+                success: function(response) {
+                    $('#table-container').html(response.html);
+                }
+            });
+        }
+    
+        $('#search').on('keyup', function() {
+            fetchBookings();
+        });
+    
+        $('#filter-status').on('change', function() {
+            fetchBookings();
+        });
+    });
+    </script>
 </body>
-</html> 
+
+</html>

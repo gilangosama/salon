@@ -18,7 +18,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        
+        return abort(404);
     }
 
     /**
@@ -60,9 +60,20 @@ class BookingController extends Controller
             return back()->withErrors($booking)->withInput();
         }
 
-        Booking::create($booking->validated());
-        Alert::success('Success', 'Booking has been successfully created');
-        return redirect()->route('bookings.create');
+        Booking::create([
+            'user_id' => auth()->id(),
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
+            'service' => $request['service'],
+            'date' => $request['date'],
+            'time' => $request['time'],
+            'notes' => $request['notes'],
+            'status' => 'pending'
+        ]);
+        $phoneAdmin = '6281234567890'; // ganti no wa dengan no wa admin
+        $message = 'Hallo, saya ingin membooking layanan ' . $request['service'] . ' pada tanggal ' . $request['date'] . ' pukul ' . $request['time'] .' dengan atas nama '. $request['name'] .'. Terima kasih.'; 
+        return redirect()->away('https://api.whatsapp.com/send?phone='. $phoneAdmin . '&text=' . $message);
     }
 
     /**
@@ -122,7 +133,7 @@ class BookingController extends Controller
         $bookingData = Booking::findOrFail($id);
         $bookingData->update($booking->validated());
         Alert::success('Success', 'Booking has been successfully updated');
-        return redirect()->route('bookings.index');
+        return redirect()->route('bookings.create');
     }
 
     /**

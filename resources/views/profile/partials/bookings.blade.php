@@ -48,7 +48,7 @@
                 </div>
             @endforeach
 
-            <div class="mt-6 flex items-center justify-center">
+            <div class="mt-6 flex items-center justify-beetween">
                 {{ $bookings->links() }}
             </div>
         </div>

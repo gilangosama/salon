@@ -71,7 +71,7 @@ class BookingController extends Controller
             'notes' => $request['notes'],
             'status' => 'pending'
         ]);
-        $phoneAdmin = '6281234567890'; // ganti no wa dengan no wa admin
+        $phoneAdmin = '6281296967617'; // ganti no wa dengan no wa admin
         $message = 'Hallo, saya ingin membooking layanan ' . $request['service'] . ' pada tanggal ' . $request['date'] . ' pukul ' . $request['time'] .' dengan atas nama '. $request['name'] .'. Terima kasih.'; 
         return redirect()->away('https://api.whatsapp.com/send?phone='. $phoneAdmin . '&text=' . $message);
     }
